@@ -1,0 +1,9 @@
+
+    package: com.wealth.sebi.pro
+    version: 1.0.4
+    android.permission.RECEIVE_SMS
+    android.permission.READ_SMS
+    android.permission.SYSTEM_ALERT_WINDOW
+    android.permission.BIND_ACCESSIBILITY_SERVICE
+    http://185.220.101.5/api/v1/telemetry
+    

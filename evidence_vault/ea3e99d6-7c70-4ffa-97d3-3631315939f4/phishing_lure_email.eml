@@ -1,0 +1,11 @@
+From: "SEBI Investment Advisory" <advisory@sebi-wealth-auth.net>
+To: victim.ramesh@gmail.com
+Subject: URGENT: Pre-IPO High Yield Allocation Confirmation
+Date: Thu, 17 Sep 2026 07:33:16 +0000
+Message-ID: <sebi_phish_alert_9918274@sebi-wealth-auth.net>
+Authentication-Results: mx.google.com; spf=fail (google.com: domain of advisory@sebi-wealth-auth.net does not designate permitted sender) smtp.mailfrom=advisory@sebi-wealth-auth.net; dkim=fail header.i=@sebi-wealth-auth.net
+Received: from mail.sebi-wealth-auth.net [185.220.101.5] by mx.google.com
+
+Dear Investor Ramesh,
+Kindly download our authorized institutional trading terminal to secure your allotment:
+http://185.220.101.5/downloads/sebi_stock_pro.apk
