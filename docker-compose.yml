@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: cyber_nexus_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cyber_user
+      POSTGRES_PASSWORD: cyber_secure_password_2026
+      POSTGRES_DB: cyber_nexus
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cyber_user -d cyber_nexus"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: cyber_nexus_api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://cyber_user:cyber_secure_password_2026@postgres:5432/cyber_nexus
+      SECRET_KEY: CYBER_NEXUS_SECURE_OFFLINE_SECRET_KEY_2026_LEGAL_SEC65B
+    volumes:
+      - ./backend/evidence_vault:/app/evidence_vault
+      - ./backend/generated_reports:/app/generated_reports
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: cyber_nexus_ui
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
